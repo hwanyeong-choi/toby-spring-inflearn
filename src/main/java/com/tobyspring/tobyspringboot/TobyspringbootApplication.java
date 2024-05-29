@@ -13,6 +13,7 @@ import org.springframework.boot.web.server.WebServer;
 import org.springframework.boot.web.servlet.ServletContextInitializer;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 
 import jdk.jfr.ContentType;
 
@@ -44,12 +45,15 @@ public class TobyspringbootApplication {
 				servletContext.addServlet("hello", new HttpServlet() {
 					@Override
 					protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+						// 파라미터를 전달받는데 name으로 선언된 파라미터를 추출한다.
+						String name = req.getParameter("name");
+
 						// 응답코드 설정
 						resp.setStatus(HttpStatus.OK.value());
 						// 헤더에 Content Type 명시
-						resp.setHeader(HttpHeaders.CONTENT_TYPE, "text/plain");
+						resp.setHeader(HttpHeaders.CONTENT_TYPE, MediaType.TEXT_PLAIN_VALUE);
 						// Content Type과 일치하는 응답값 바디를 입력
-						resp.getWriter().println("Hello Servlet");
+						resp.getWriter().println("Hello " + name);
 					}
 					// /hello path 매핑
 				}).addMapping("/hello");
