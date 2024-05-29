@@ -12,6 +12,7 @@ import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactor
 import org.springframework.boot.web.server.WebServer;
 import org.springframework.boot.web.servlet.ServletContextInitializer;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 
@@ -42,21 +43,33 @@ public class TobyspringbootApplication {
 			 */
 			@Override
 			public void onStartup(ServletContext servletContext) throws ServletException {
-				servletContext.addServlet("hello", new HttpServlet() {
+				servletContext.addServlet("frontController", new HttpServlet() {
 					@Override
 					protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-						// 파라미터를 전달받는데 name으로 선언된 파라미터를 추출한다.
-						String name = req.getParameter("name");
+						// 인증, 보안, 다국어처리, 공통 기능 등등 구현을 여기서 한다.
+						// 현재 접근하는 경로가 /hello인지 확인한다.
+						// 현재 요청 메소드가 GET인지 확인한다.
+						if (req.getRequestURI().equals("/hello") && req.getMethod().equals(HttpMethod.GET.name())) {
+							// 파라미터를 전달받는데 name으로 선언된 파라미터를 추출한다.
+							String name = req.getParameter("name");
 
-						// 응답코드 설정
-						resp.setStatus(HttpStatus.OK.value());
-						// 헤더에 Content Type 명시
-						resp.setHeader(HttpHeaders.CONTENT_TYPE, MediaType.TEXT_PLAIN_VALUE);
-						// Content Type과 일치하는 응답값 바디를 입력
-						resp.getWriter().println("Hello " + name);
+							// 응답코드 설정
+							resp.setStatus(HttpStatus.OK.value());
+							// 헤더에 Content Type 명시
+							resp.setHeader(HttpHeaders.CONTENT_TYPE, MediaType.TEXT_PLAIN_VALUE);
+							// Content Type과 일치하는 응답값 바디를 입력
+							resp.getWriter().println("Hello " + name);
+						} else if(req.getRequestURI().equals("/user")) {
+							//
+						} else {
+							resp.setStatus(HttpStatus.NOT_FOUND.value());
+						}
+						
+
+
 					}
-					// /hello path 매핑
-				}).addMapping("/hello");
+					// / 모든 요청에대해 처리하기 위해 모든 경로에 해당하는 정규표현식 경로 설정
+				}).addMapping("/*");
 			}
 		});
 
