@@ -11,16 +11,22 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
 import org.springframework.boot.web.server.WebServer;
 import org.springframework.boot.web.servlet.ServletContextInitializer;
-import org.springframework.http.HttpHeaders;
+import org.springframework.context.support.GenericApplicationContext;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 
-import jdk.jfr.ContentType;
-
 public class TobyspringbootApplication {
 
 	public static void main(String[] args) {
+
+		// Spring Container 구현
+		GenericApplicationContext applicationContext = new GenericApplicationContext();
+		// Spring Container Bead등록 클래스의 구성정보 메타정보를 넘겨주는 준다.
+		applicationContext.registerBean(HelloController.class);
+		// ApplicationContext가 refresh메소드를 통해 빈 오브젝트를 생성합니다.
+		applicationContext.refresh();
+
 		/*
 			Spring Boot에서 Tomcat Sublet 컨테이너를 내장해서 프로그앰에서 코드로
 			쉽게 사용할 수 있도록 제공하는 클래스 TomcatServletWebServerFactory
@@ -35,8 +41,6 @@ public class TobyspringbootApplication {
 		 */
 
 		WebServer webServer = serverFactory.getWebServer(new ServletContextInitializer() {
-			// /hello 경로에 대한 요청을 처리할 수 있는 객체를 구현
-			HelloController helloController = new HelloController();
 			/*
 				serverFactory를 통해서 서블릿 컨테이너가 생성되었다면 서블릿 컨테이너에
 				서블릿을 등록한다. 서블릿을 등록하는건 webserver생성시 ServletContextInitializer을
@@ -55,17 +59,17 @@ public class TobyspringbootApplication {
 							// 파라미터를 전달받는데 name으로 선언된 파라미터를 추출한다.
 							String name = req.getParameter("name");
 
+							// Spring Container에서 사용하고자 하는 타입의 빈을 요청한다.
+							// 빈을 요청할때는 빈의 이름으로 찾을수도 있지만 클래스 타입으로도 가능하다.
+							HelloController helloController = applicationContext.getBean(HelloController.class);
+
 							// 요청을 처리할 객체에로 파라미터를 전달한다.
 							String ret = helloController.hello(name);
 
-							// 응답코드 설정
-							resp.setStatus(HttpStatus.OK.value());
 							// 헤더에 Content Type 명시
-							resp.setHeader(HttpHeaders.CONTENT_TYPE, MediaType.TEXT_PLAIN_VALUE);
+							resp.setContentType(MediaType.TEXT_PLAIN_VALUE);
 							// Content Type과 일치하는 응답값 바디를 입력
 							resp.getWriter().println(ret);
-						} else if(req.getRequestURI().equals("/user")) {
-							//
 						} else {
 							resp.setStatus(HttpStatus.NOT_FOUND.value());
 						}
