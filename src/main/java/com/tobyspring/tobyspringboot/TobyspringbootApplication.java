@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
 import org.springframework.boot.web.server.WebServer;
 import org.springframework.boot.web.servlet.ServletContextInitializer;
@@ -22,8 +23,10 @@ public class TobyspringbootApplication {
 
 		// Spring Container 구현
 		GenericApplicationContext applicationContext = new GenericApplicationContext();
-		// Spring Container Bead등록 클래스의 구성정보 메타정보를 넘겨주는 준다.
+		// Spring Container HelloController Bean등록 클래스의 구성정보 메타정보를 넘겨준다.
 		applicationContext.registerBean(HelloController.class);
+		// Spring Container SimpleHelloService를 Bean등록 클래스의 구성정보 메타정보를 넘겨준다.
+		applicationContext.registerBean(SimpleHelloService.class);
 		// ApplicationContext가 refresh메소드를 통해 빈 오브젝트를 생성합니다.
 		applicationContext.refresh();
 
