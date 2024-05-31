@@ -3,6 +3,7 @@ package com.tobyspring.tobyspringboot;
 
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
 import org.springframework.boot.web.server.WebServer;
+import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -29,6 +30,16 @@ import org.springframework.web.servlet.DispatcherServlet;
 @Configuration
 public class TobyspringbootApplication {
 
+	@Bean
+	public ServletWebServerFactory servletWebServerFactory() {
+		return new TomcatServletWebServerFactory();
+	}
+
+	@Bean
+	public DispatcherServlet dispatcherServlet() {
+		return new DispatcherServlet();
+	}
+
 	public static void main(String[] args) {
 
 		/*
@@ -46,10 +57,24 @@ public class TobyspringbootApplication {
 			protected void onRefresh() {
 				super.onRefresh();
 				/*
-			Spring Boot에서 Tomcat Sublet 컨테이너를 내장해서 프로그앰에서 코드로
-			쉽게 사용할 수 있도록 제공하는 클래스 TomcatServletWebServerFactory
-		 */
-				TomcatServletWebServerFactory serverFactory = new TomcatServletWebServerFactory();
+					Spring Boot에서 Tomcat Sublet 컨테이너를 내장해서 프로그앰에서 코드로
+					쉽게 사용할 수 있도록 제공하는 클래스 TomcatServletWebServerFactory
+				 */
+
+				// Bean으로 등록한 ServletWebServerFactory를 요청하여 오브젝트를 반환받는다.
+				ServletWebServerFactory serverFactory = this.getBean(ServletWebServerFactory.class);
+				// Bean으로 등록한 DispatcherServlet를 요청하여 오브젝트를 반환받는다.
+				DispatcherServlet dispatcherServlet = this.getBean(DispatcherServlet.class);
+				// Spring Container를 DispatcherServlet에 등록
+				/*
+					그러나 구지 등록하지 않아도 Spring Container가 ApplicationContext를 등록해줍니다.
+					DispatcherServlet는 ApplicationContextAward 인터페이스를 구현하고있기 때문에
+					Spring Continer는 ApplicationContextAward인터페이스를 구현하고 있는 오브젝트라면
+					해당 오브젝트에 ApplicationContext를 setter 메소드를 통해 주입해줍니다.
+				 */
+
+
+				dispatcherServlet.setApplicationContext(this);
 
 		/*
 			웹서버 서블릿 컨테이너를 생성하는 함수 serverFactory.getWebServer()
@@ -60,8 +85,7 @@ public class TobyspringbootApplication {
 
 				WebServer webServer = serverFactory.getWebServer(servletContext -> {
 					// DispatcherServlet등록
-					servletContext.addServlet("dispatcherServlet",
-						new DispatcherServlet(this))
+					servletContext.addServlet("dispatcherServlet", dispatcherServlet)
 						.addMapping("/*");
 				});
 

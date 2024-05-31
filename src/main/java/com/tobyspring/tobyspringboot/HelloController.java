@@ -2,6 +2,9 @@ package com.tobyspring.tobyspringboot;
 
 import java.util.Objects;
 
+import org.springframework.beans.BeansException;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,14 +20,20 @@ import org.springframework.web.bind.annotation.RestController;
 
 // @RestController애노테이션은 @Component애노테이션을 메타 애니토에션으로 포함하고 있기때문에
 // @Component애노테이션 생략을해도 Bean으로 등록이 가능합니다.
+
+// Spring Container가 ApplicationContextAware를 구현하고있는 오브젝트에 ApplicationContext를 주집하는지 테스트
 @RestController
 @RequestMapping("/hello")
 public class HelloController {
 
 	private final HelloService helloService;
 
-	public HelloController(HelloService helloService) {
+	private final ApplicationContext applicationContext;
+
+	// applicationContext를 생성자를 통해서 주입도 가능합니다.
+	public HelloController(HelloService helloService, ApplicationContext applicationContext) {
 		this.helloService = helloService;
+		this.applicationContext = applicationContext;
 	}
 
 	// GET 메소드를 사용하고 /hello 경로로 접근하는 요청을 매핑하겠다.
@@ -47,4 +56,10 @@ public class HelloController {
 		return helloService.sayHello(Objects.requireNonNull(name));
 	}
 
+	// Spring Container가 ApplicationContextAware를 구현하고있는 오브젝트에 ApplicationContext를 주집하는지 테스트
+	// @Override
+	// public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+	// 	System.out.println(applicationContext);
+	// 	this.applicationContext = applicationContext;
+	// }
 }
