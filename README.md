@@ -37,3 +37,20 @@
 | 섹션 3. 독립실행형 서블릿 애플리케이션   | HelloController 매핑과 바인딩 | [티스토리 링크](https://include-hoany.tistory.com/27) |
 
 ---
+
+## 섹션 4. 독립 실행형 스프링 애플리케이션
+| 섹션                     | 강의명                    | 정리 블로그 링크                                       |
+|------------------------|------------------------|-------------------------------------------------|
+| 섹션 4. 독립실행형 스프링 애플리케이션 | 스프링 컨테이너 사용            | [티스토리 링크](https://include-hoany.tistory.com/28) |
+| 섹션 4. 독립실행형 스프링 애플리케이션 | 의존 오브젝트 추가             | [티스토리 링크](https://include-hoany.tistory.com/29) |
+| 섹션 4. 독립실행형 스프링 애플리케이션 | 의존성 역전                 | [티스토리 링크](https://include-hoany.tistory.com/30) |
+| 섹션 4. 독립실행형 스프링 애플리케이션 | 의존 오브젝트 DI 적용          | [티스토리 링크](https://include-hoany.tistory.com/31) |
+| 섹션 4. 독립실행형 스프링 애플리케이션 | DispatcherServlet으로 전환 | [티스토리 링크](https://include-hoany.tistory.com/32) |
+| 섹션 4. 독립실행형 스프링 애플리케이션 | 애노테이션 매핑 정보 사용         | [티스토리 링크](https://include-hoany.tistory.com/33) |
+| 섹션 4. 독립실행형 스프링 애플리케이션 | 스프링 컨테이너로 통합           | [티스토리 링크](https://include-hoany.tistory.com/34) |
+| 섹션 4. 독립실행형 스프링 애플리케이션 | 자바코드 구성 정보 사용          | [티스토리 링크](https://include-hoany.tistory.com/35) |
+| 섹션 4. 독립실행형 스프링 애플리케이션 | @ComponentScan         | [티스토리 링크](https://include-hoany.tistory.com/36) |
+| 섹션 4. 독립실행형 스프링 애플리케이션 | Bean 생명주기 메소드          | [티스토리 링크](https://include-hoany.tistory.com/37) |
+| 섹션 4. 독립실행형 스프링 애플리케이션 | SpringBootApplication  | [티스토리 링크](https://include-hoany.tistory.com/38) |
+
+---
