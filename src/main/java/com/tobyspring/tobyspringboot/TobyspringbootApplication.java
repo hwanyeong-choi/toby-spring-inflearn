@@ -16,13 +16,18 @@ import org.springframework.context.support.GenericApplicationContext;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.web.context.support.GenericWebApplicationContext;
+import org.springframework.web.servlet.DispatcherServlet;
 
 public class TobyspringbootApplication {
 
 	public static void main(String[] args) {
 
-		// Spring Container 구현
-		GenericApplicationContext applicationContext = new GenericApplicationContext();
+		/*
+			Spring Container 구현, DispatcherServlet을 사용하기 위해서는
+			GenericApplicationContext이 아닌 GenericWebApplicationContext 형식으로 생성해야합니다.
+		 */
+		GenericWebApplicationContext applicationContext = new GenericWebApplicationContext();
 		// Spring Container HelloController Bean등록 클래스의 구성정보 메타정보를 넘겨준다.
 		applicationContext.registerBean(HelloController.class);
 		// Spring Container SimpleHelloService를 Bean등록 클래스의 구성정보 메타정보를 넘겨준다.
@@ -51,35 +56,11 @@ public class TobyspringbootApplication {
 			 */
 			@Override
 			public void onStartup(ServletContext servletContext) throws ServletException {
-				servletContext.addServlet("frontController", new HttpServlet() {
-					@Override
-					protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-						// 인증, 보안, 다국어처리, 공통 기능 등등 구현을 여기서 한다.
-						// 현재 접근하는 경로가 /hello인지 확인한다.
-						// 현재 요청 메소드가 GET인지 확인한다.
-						if (req.getRequestURI().equals("/hello") && req.getMethod().equals(HttpMethod.GET.name())) {
-
-							// 파라미터를 전달받는데 name으로 선언된 파라미터를 추출한다.
-							String name = req.getParameter("name");
-
-							// Spring Container에서 사용하고자 하는 타입의 빈을 요청한다.
-							// 빈을 요청할때는 빈의 이름으로 찾을수도 있지만 클래스 타입으로도 가능하다.
-							HelloController helloController = applicationContext.getBean(HelloController.class);
-
-							// 요청을 처리할 객체에로 파라미터를 전달한다.
-							String ret = helloController.hello(name);
-
-							// 헤더에 Content Type 명시
-							resp.setContentType(MediaType.TEXT_PLAIN_VALUE);
-							// Content Type과 일치하는 응답값 바디를 입력
-							resp.getWriter().println(ret);
-						} else {
-							resp.setStatus(HttpStatus.NOT_FOUND.value());
-						}
-
-					}
-					// / 모든 요청에대해 처리하기 위해 모든 경로에 해당하는 정규표현식 경로 설정
-				}).addMapping("/*");
+				//  서블릿 등록
+				servletContext.addServlet("dispatcherServlet",
+					// DispatcherServlet 등록
+					new DispatcherServlet(applicationContext)
+					).addMapping("/*");
 			}
 		});
 
