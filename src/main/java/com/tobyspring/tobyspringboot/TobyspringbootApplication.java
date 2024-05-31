@@ -4,6 +4,7 @@ package com.tobyspring.tobyspringboot;
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
 import org.springframework.boot.web.server.WebServer;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
@@ -16,26 +17,17 @@ import org.springframework.web.servlet.DispatcherServlet;
 	그 어노테이션은 Configuration입니다.
  */
 
+/*
+	@ComponentScan 애노테이션은 Component 애노테이션이 붙은 클래스들을 찾아서 빈으로 등록하라는 명령을
+	@ComponentScan을 붙이는걸로 컨테이너에게 전달이 됩니다.
+
+	@ComponentScan이 붙어있는 클래스가 있는 패키지부터 시작해 그 하위 패키지를 확인해서
+	컴포넌트라는 애노테이션이 붙은 모든 클래스를 Bean으로 등록합니다 Bean으로 등록할 때
+	필요하다면 의존 오브젝트를 찾아내고 이걸 생성자를 호출할 때 파라미터로 넘겨줍니다.
+ */
+@ComponentScan
 @Configuration
 public class TobyspringbootApplication {
-
-	/*
-		Bean을 등록할때 FactoryMethod사용하여 오브젝트를 생성할 수 있도록 구현합니다.
-		Spring Container가 의존성 주입을 하기 때문에 FactoryMethod에 매개변수로 의전 오브젝트를
-		주입받도록 합니다
-
-		또한 SpringContainer가 해당 팩토리 메소드를 인지해야하는데
-		인지시키기 위해서는 Bean애노테이션을 작성하면 Spring Container가 해당 팩토리 메소드를 인지할 수 있게 됩니다.
-	*/
-	@Bean
-	public HelloController helloController(HelloService helloService) {
-		return new HelloController(helloService);
-	}
-
-	@Bean
-	public HelloService helloService() {
-		return new SimpleHelloService();
-	}
 
 	public static void main(String[] args) {
 

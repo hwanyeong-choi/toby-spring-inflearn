@@ -4,13 +4,20 @@ import java.util.Objects;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 /*
- DispatchServlet이 맵핑정보를 만들때 클랙스 레벨에 있는 정보를 먼저 참고한다.
- 그리고난 후 메소드 레벨에 붙어있는 정보를 추가합니다.
+	DispatchServlet이 맵핑정보를 만들때 클랙스 레벨에 있는 정보를 먼저 참고한다.
+	그리고난 후 메소드 레벨에 붙어있는 정보를 추가합니다.
  */
 
+/*
+	Component라는 어노테이션으로 스프링컨테이너에 들어가는 컴포넌트야 라고 선언을 한다.
+ */
+
+// @RestController애노테이션은 @Component애노테이션을 메타 애니토에션으로 포함하고 있기때문에
+// @Component애노테이션 생략을해도 Bean으로 등록이 가능합니다.
+@RestController
 @RequestMapping("/hello")
 public class HelloController {
 
@@ -28,9 +35,12 @@ public class HelloController {
 
 	 String값을 그대로 Web 응답에 Body에 넣어서 전달하게 하는 텍스트 플레인으로
 	 전달하게 하는 방식을 사용하려면 ResponseBody를 사용하면 됩니다.
+
+	 @ResponseBody애노테이션은 @RestController에 메타 애노테이션으로 포함하고 있기 때문에
+	 생략이 가능하다
 	 */
 
-	@ResponseBody
+	// @ResponseBody
 	// RequestMapping을 사용해도 되지만 간결하게 사용하기위해 @GetMapping로 합쳐진 애노테이션이 만들어졌다.
 	// @RequestMapping(method = RequestMethod.GET, value = "/hello")
 	public String hello(String name) {
