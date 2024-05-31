@@ -24,16 +24,14 @@ import org.springframework.web.bind.annotation.RestController;
 // Spring Container가 ApplicationContextAware를 구현하고있는 오브젝트에 ApplicationContext를 주집하는지 테스트
 @RestController
 @RequestMapping("/hello")
-public class HelloController {
+public class HelloController implements ApplicationContextAware {
 
 	private final HelloService helloService;
 
-	private final ApplicationContext applicationContext;
+	private ApplicationContext applicationContext;
 
-	// applicationContext를 생성자를 통해서 주입도 가능합니다.
-	public HelloController(HelloService helloService, ApplicationContext applicationContext) {
+	public HelloController(HelloService helloService) {
 		this.helloService = helloService;
-		this.applicationContext = applicationContext;
 	}
 
 	// GET 메소드를 사용하고 /hello 경로로 접근하는 요청을 매핑하겠다.
@@ -57,9 +55,9 @@ public class HelloController {
 	}
 
 	// Spring Container가 ApplicationContextAware를 구현하고있는 오브젝트에 ApplicationContext를 주집하는지 테스트
-	// @Override
-	// public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-	// 	System.out.println(applicationContext);
-	// 	this.applicationContext = applicationContext;
-	// }
+	@Override
+	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+		System.out.println(applicationContext);
+		this.applicationContext = applicationContext;
+	}
 }
