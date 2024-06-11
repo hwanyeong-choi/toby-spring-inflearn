@@ -38,4 +38,24 @@ public class HelloApiTest {
 
     }
 
+    /*
+        네트워크 통신을 통한 테스트를 진행할때도 오류에대한 테스트가 가능합니다.
+     */
+
+    @Test
+    void failHelloApi() {
+
+        TestRestTemplate rest = new TestRestTemplate();
+
+        ResponseEntity<String> response
+                = rest.getForEntity("http://localhost:8080/hello?name", String.class);
+
+        /*
+            응답 검증
+            State code: 500
+         */
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.INTERNAL_SERVER_ERROR);
+
+    }
+
 }

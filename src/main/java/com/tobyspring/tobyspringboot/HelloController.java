@@ -51,6 +51,8 @@ public class HelloController implements ApplicationContextAware {
 	// RequestMapping을 사용해도 되지만 간결하게 사용하기위해 @GetMapping로 합쳐진 애노테이션이 만들어졌다.
 	// @RequestMapping(method = RequestMethod.GET, value = "/hello")
 	public String hello(String name) {
+		// name 값이 null이거나 빈 공백일경우 IllegalArgumentException오류가 발생하도록 구현
+		if (name == null || name.trim().isEmpty()) throw new IllegalArgumentException("잘못된 name 입력값 입니다.");
 		return helloService.sayHello(Objects.requireNonNull(name));
 	}
 
