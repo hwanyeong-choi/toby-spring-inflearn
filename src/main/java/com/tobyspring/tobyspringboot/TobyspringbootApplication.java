@@ -1,6 +1,7 @@
 package com.tobyspring.tobyspringboot;
 
 
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
 import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
 import org.springframework.context.annotation.Bean;
@@ -38,16 +39,14 @@ public class TobyspringbootApplication {
 		return new DispatcherServlet();
 	}
 
-	public static void main(String[] args) {
-		MySpringApplication.run(TobyspringbootApplication.class, args);
-	}
+//	public static void main(String[] args) {
+//		MySpringApplication.run(TobyspringbootApplication.class, args);
+//	}
 
 	// SpringBoot 프로젝트 생성시 프로젝트를 생성하는 메인 코드를 보자
 	// 위 우리가 직접 구현한 MySpringApplication.run(TobyspringbootApplication.class, args); 유사합니다.
-	/*
-		public void main(String[] args) {
-			SpringApplication.run(TobyspringbootApplication.class, args);
-		}
-	 */
+	public static void main(String[] args) {
+		SpringApplication.run(TobyspringbootApplication.class, args);
+	}
 
 }
