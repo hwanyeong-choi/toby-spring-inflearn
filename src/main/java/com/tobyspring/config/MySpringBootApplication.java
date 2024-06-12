@@ -1,4 +1,4 @@
-package com.tobyspring.tobyspringboot;
+package com.tobyspring.config;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -21,8 +21,13 @@ import java.lang.annotation.Target;
     @Target 애노테이션에 ElementType.TYPE을 적용한다면 class, interface, enum
     세가지 종ㄹ의 대상에게 뷰여할 수 있는 애노테이션을 구성할 수 있습니다.
  */
+
+/*
+    @Import를 통해 다른 패키지에있는 구성정보를 불러와 등록할 수 있습니다.
+ */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
 @Configuration
 @ComponentScan
-public @interface MySpringBootAnnotation { }
+@EnableMyAutoConfiguration
+public @interface MySpringBootApplication { }

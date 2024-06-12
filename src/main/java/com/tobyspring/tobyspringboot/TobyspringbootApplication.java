@@ -1,13 +1,8 @@
 package com.tobyspring.tobyspringboot;
 
 
+import com.tobyspring.config.MySpringBootApplication;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
-import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.DispatcherServlet;
 
 /*
 	Bean을 Spring Container가 인지하기 위해서는 한가지 작업을 더 해야하는데
@@ -31,7 +26,7 @@ import org.springframework.web.servlet.DispatcherServlet;
 	메타 애노테이션으로 가지고 있는 합성 @MySpringBootAnnotation을 구성하여
 	적용합니다.
  */
-@MySpringBootAnnotation
+@MySpringBootApplication
 public class TobyspringbootApplication {
 
 //	public static void main(String[] args) {
