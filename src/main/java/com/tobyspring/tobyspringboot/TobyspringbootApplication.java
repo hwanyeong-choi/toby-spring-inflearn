@@ -25,19 +25,14 @@ import org.springframework.web.servlet.DispatcherServlet;
 	컴포넌트라는 애노테이션이 붙은 모든 클래스를 Bean으로 등록합니다 Bean으로 등록할 때
 	필요하다면 의존 오브젝트를 찾아내고 이걸 생성자를 호출할 때 파라미터로 넘겨줍니다.
  */
-@ComponentScan
-@Configuration
+
+/*
+	기존에 존재하였는 @ComponentScan, @Configuration 애노테이션을
+	메타 애노테이션으로 가지고 있는 합성 @MySpringBootAnnotation을 구성하여
+	적용합니다.
+ */
+@MySpringBootAnnotation
 public class TobyspringbootApplication {
-
-	@Bean
-	public ServletWebServerFactory servletWebServerFactory() {
-		return new TomcatServletWebServerFactory();
-	}
-
-	@Bean
-	public DispatcherServlet dispatcherServlet() {
-		return new DispatcherServlet();
-	}
 
 //	public static void main(String[] args) {
 //		MySpringApplication.run(TobyspringbootApplication.class, args);
