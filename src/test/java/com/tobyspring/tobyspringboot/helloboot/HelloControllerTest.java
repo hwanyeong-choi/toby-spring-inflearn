@@ -1,5 +1,6 @@
-package com.tobyspring.tobyspringboot;
+package com.tobyspring.tobyspringboot.helloboot;
 
+import com.tobyspring.tobyspringboot.HelloController;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 

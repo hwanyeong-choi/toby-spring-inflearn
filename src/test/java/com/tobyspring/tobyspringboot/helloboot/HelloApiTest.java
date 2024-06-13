@@ -1,6 +1,5 @@
-package com.tobyspring.tobyspringboot;
+package com.tobyspring.tobyspringboot.helloboot;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.HttpHeaders;
