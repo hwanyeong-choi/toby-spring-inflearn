@@ -62,7 +62,7 @@
 | 섹션 5. DI와 테스트, 디자인 패턴  | DI와 단위테스트                   | [티스토리 링크](https://include-hoany.tistory.com/41) |
 | 섹션 5. DI와 테스트, 디자인 패턴  | DI를 이용한 Decorator, Proxy 패턴 | [티스토리 링크](https://include-hoany.tistory.com/42)
 
---
+---
 
 ## 섹션 6. 자동 구성 기반 애플리케이션
 | 섹션                    | 강의명                              | 정리 블로그 링크                                       |
