@@ -61,3 +61,17 @@
 | 섹션 5. DI와 테스트, 디자인 패턴  | 테스트 코드를 이용한 테스트             | [티스토리 링크](https://include-hoany.tistory.com/40) 
 | 섹션 5. DI와 테스트, 디자인 패턴  | DI와 단위테스트                   | [티스토리 링크](https://include-hoany.tistory.com/41) |
 | 섹션 5. DI와 테스트, 디자인 패턴  | DI를 이용한 Decorator, Proxy 패턴 | [티스토리 링크](https://include-hoany.tistory.com/42)
+
+--
+
+## 섹션 6. 자동 구성 기반 애플리케이션
+| 섹션                    | 강의명                              | 정리 블로그 링크                                       |
+|-----------------------|----------------------------------|-------------------------------------------------|
+| 섹션 6. 자동 구성 기반 애플리케이션 | 메타 애노테이션과 합성 애노테이션               | [티스토리 링크](https://include-hoany.tistory.com/43) 
+| 섹션 6. 자동 구성 기반 애플리케이션 | 합성 애노테이션 적용                      | [티스토리 링크](https://include-hoany.tistory.com/44) |
+| 섹션 6. 자동 구성 기반 애플리케이션 | 빈 오브젝트의 역할과 구분                   | [티스토리 링크](https://include-hoany.tistory.com/45) |
+| 섹션 6. 자동 구성 기반 애플리케이션 | 인프라 빈 구성 정보와 분리                  | [티스토리 링크](https://include-hoany.tistory.com/46) |
+| 섹션 6. 자동 구성 기반 애플리케이션 | 동적인 자동 구성 정보 등록                  | [티스토리 링크](https://include-hoany.tistory.com/50) |
+| 섹션 6. 자동 구성 기반 애플리케이션 | 자동 구성 정보 파일 분리                   | [티스토리 링크](https://include-hoany.tistory.com/47) |
+| 섹션 6. 자동 구성 기반 애플리케이션 | 자동 구성 애노테이션 적용                   | [티스토리 링크](https://include-hoany.tistory.com/48) |
+| 섹션 6. 자동 구성 기반 애플리케이션 | @Configuration과 proxybeanMethods | [티스토리 링크](https://include-hoany.tistory.com/49) |
