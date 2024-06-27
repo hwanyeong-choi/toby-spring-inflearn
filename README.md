@@ -75,3 +75,15 @@
 | 섹션 6. 자동 구성 기반 애플리케이션 | 자동 구성 정보 파일 분리                   | [티스토리 링크](https://include-hoany.tistory.com/47) |
 | 섹션 6. 자동 구성 기반 애플리케이션 | 자동 구성 애노테이션 적용                   | [티스토리 링크](https://include-hoany.tistory.com/48) |
 | 섹션 6. 자동 구성 기반 애플리케이션 | @Configuration과 proxybeanMethods | [티스토리 링크](https://include-hoany.tistory.com/49) |
+
+---
+
+## 섹션 7. 조건부 자동구성
+| 섹션                    | 강의명                            | 정리 블로그 링크                                       |
+|-----------------------|--------------------------------|-------------------------------------------------|
+| 섹션 7. 조건부 자동구성        | 스타터와 Jetty 서버 구성 추가            | [티스토리 링크](https://include-hoany.tistory.com/53) 
+| 섹션 7. 조건부 자동구성        | @Conditional과 Condition        | [티스토리 링크](https://include-hoany.tistory.com/54) 
+| 섹션 7. 조건부 자동구성        | @Conditional, Condition 학습 테스트 | [티스토리 링크](https://include-hoany.tistory.com/55) 
+| 섹션 7. 조건부 자동구성        | 커스텀 @COnditional               | [티스토리 링크](https://include-hoany.tistory.com/56) 
+| 섹션 7. 조건부 자동구성        | 자동 구성 정보 대체하기                  | [티스토리 링크](https://include-hoany.tistory.com/57) 
+| 섹션 7. 조건부 자동구성        | 스프링 부트의 @Conditional           | [티스토리 링크](https://include-hoany.tistory.com/58) 
