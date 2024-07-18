@@ -2,7 +2,11 @@ package com.tobyspring.tobyspringboot;
 
 
 import com.tobyspring.config.MySpringBootApplication;
+import org.springframework.boot.ApplicationArguments;
+import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.core.env.Environment;
 
 /*
 	Bean을 Spring Container가 인지하기 위해서는 한가지 작업을 더 해야하는데

@@ -23,7 +23,7 @@ public class HelloApiTest {
         TestRestTemplate rest = new TestRestTemplate();
 
         ResponseEntity<String> response
-                = rest.getForEntity("http://localhost:8080/hello?name={name}", String.class, "Spring");
+                = rest.getForEntity("http://localhost:8080/app/hello?name={name}", String.class, "Spring");
 
         /*
             응답 검증
@@ -47,7 +47,7 @@ public class HelloApiTest {
         TestRestTemplate rest = new TestRestTemplate();
 
         ResponseEntity<String> response
-                = rest.getForEntity("http://localhost:8080/hello?name", String.class);
+                = rest.getForEntity("http://localhost:8080/app/hello?name", String.class);
 
         /*
             응답 검증
