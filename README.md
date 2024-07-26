@@ -87,3 +87,14 @@
 | 섹션 7. 조건부 자동구성        | 커스텀 @COnditional               | [티스토리 링크](https://include-hoany.tistory.com/56) 
 | 섹션 7. 조건부 자동구성        | 자동 구성 정보 대체하기                  | [티스토리 링크](https://include-hoany.tistory.com/57) 
 | 섹션 7. 조건부 자동구성        | 스프링 부트의 @Conditional           | [티스토리 링크](https://include-hoany.tistory.com/58) 
+
+---
+
+## 섹션 8. 외부 설정을 이용한 자동 구성
+| 섹션                      | 강의명                            | 정리 블로그 링크                                       |
+|-------------------------|--------------------------------|-------------------------------------------------|
+| 섹션 8. 외부 설정을 이용한 자동 구성  | Enviroment 추상화와 프로퍼티            | [티스토리 링크](https://include-hoany.tistory.com/60) 
+| 섹션 8. 외부 설정을 이용한 자동 구성  | 자동 구성에 Enviroment 프로퍼티 적용        | [티스토리 링크](https://include-hoany.tistory.com/61) 
+| 섹션 8. 외부 설정을 이용한 자동 구성  | @Value와 PropertySourcesPlaceholderConfigurer | [티스토리 링크](https://include-hoany.tistory.com/62) 
+| 섹션 8. 외부 설정을 이용한 자동 구성  | 프로퍼티 클래스의 분리            | [티스토리 링크](https://include-hoany.tistory.com/63) 
+| 섹션 8. 외부 설정을 이용한 자동 구성  | 프로퍼티 빈의 후처리기 도입                | [티스토리 링크](https://include-hoany.tistory.com/64)
