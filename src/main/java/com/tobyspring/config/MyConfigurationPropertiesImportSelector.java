@@ -1,4 +1,4 @@
-package com.tobyspring.config.autoconfig;
+package com.tobyspring.config;
 
 import org.springframework.context.annotation.DeferredImportSelector;
 import org.springframework.core.type.AnnotationMetadata;

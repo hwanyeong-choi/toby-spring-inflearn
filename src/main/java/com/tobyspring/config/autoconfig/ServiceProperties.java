@@ -1,6 +1,6 @@
 package com.tobyspring.config.autoconfig;
 
-import org.springframework.stereotype.Component;
+import com.tobyspring.config.MyConfigurationProperties;
 
 @MyConfigurationProperties(prefix = "server")
 public class ServiceProperties {
